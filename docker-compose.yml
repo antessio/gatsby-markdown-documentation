@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  gatsby:
+    image: gatsby
+    working_dir: /app
+    command: "pwd"
+    ports:
+      - "8000:8000"
+    volumes:
+     - .:/app
+     - /app/node_modules/

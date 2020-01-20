@@ -1,0 +1,2 @@
+#echo $?
+gatsby new webapp
