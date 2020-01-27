@@ -4,4 +4,4 @@ docker run -t -i --rm \
 -v $PWD:/app/ \
 --workdir '/app/webapp' \
 --entrypoint '/bin/sh' gatsby \
--c 'npm install' 
+-c 'npm install gatsby-transformer-remark' 
