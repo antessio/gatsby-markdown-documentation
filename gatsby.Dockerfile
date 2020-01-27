@@ -1,11 +1,8 @@
-FROM node:12-alpine as builder
-# Get the necessary build tools
-RUN apk update && apk add build-base autoconf automake libtool pkgconfig nasm
-
-
-# Get a clean image with gatsby-cli and the pre-built node modules
 FROM node:12-alpine
-RUN apk --no-cache add git
+RUN apk update && apk add build-base autoconf automake libtool pkgconfig nasm git curl
+RUN apk add --virtual build-dependencies build-base gcc wget
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 RUN npm install --global gatsby-cli && gatsby telemetry --disable
-#COPY --from=builder /app/node_modules /save/node_modules
+RUN ~/.cargo/bin/cargo install svgbob_cli
+
 WORKDIR /app
